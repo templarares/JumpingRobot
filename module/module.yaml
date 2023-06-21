@@ -1,0 +1,126 @@
+# Where the robot data is located
+# The JSON loader expects the data to be in certain locations relative to this path as described in:
+# https://jrl-umi3218.github.io/mc_rtc/tutorials/advanced/new-robot.html#organization-of-your-robot-description-package
+path: "@CMAKE_CURRENT_SOURCE_DIR@"
+# Name of the RobotModule/Default name of the robot when loaded with this module
+name: jumping_robot_ry
+# Where the URDF is located
+urdf_path: "@CMAKE_CURRENT_SOURCE_DIR@/urdf/jumping_robot_ry.urdf"
+# Not a fixed based robot
+fixed: false
+# Change the default configuration
+stance:
+  hip_right_y: [0.8]
+  knee_right: [-1.6]
+  ankle_right_y: [0.8]
+  hip_left_y: [0.8]
+  knee_left: [-1.6]
+  ankle_left_y: [0.8]
+#stance:
+#  hip_right_y: [-0.]
+#  knee_right: [0.]
+#  ankle_right_y: [0.]
+#  hip_left_y: [0.]
+#  knee_left: [-0.]
+#  ankle_left_y: [-0.]
+# Change the default attitude
+default_attitude: [1, 0, 0, 0, 0, 0, 0.927]
+#default_attitude: [1, 0, 0, 0, 0, 0, 1.127]
+
+#convexHulls:
+#  ankle_left: [ankle_left, "@CMAKE_CURRENT_SOURCE_DIR@/convex/jumping_robot_ry/ankle_left-ch.txt"]
+#  ankle_right: [ankle_right, "@CMAKE_CURRENT_SOURCE_DIR@/convex/jumping_robot_ry/ankle_right-ch.txt"]
+#  arm_left: [arm_left, "@CMAKE_CURRENT_SOURCE_DIR@/convex/jumping_robot_ry/arm_left-ch.txt"]
+#  arm_right: [arm_right, "@CMAKE_CURRENT_SOURCE_DIR@/convex/jumping_robot_ry/arm_right-ch.txt"]
+#  calf_left: [calf_left, "@CMAKE_CURRENT_SOURCE_DIR@/convex/jumping_robot_ry/calf_left-ch.txt"]
+#  calf_right: [calf_right, "@CMAKE_CURRENT_SOURCE_DIR@/convex/jumping_robot_ry/calf_right-ch.txt"]
+#  foot_left: [foot_left, "@CMAKE_CURRENT_SOURCE_DIR@/convex/jumping_robot_ry/foot_left-ch.txt"]
+#  foot_right: [foot_right, "@CMAKE_CURRENT_SOURCE_DIR@/convex/jumping_robot_ry/foot_right-ch.txt"]
+#  hip_left: [hip_left, "@CMAKE_CURRENT_SOURCE_DIR@/convex/jumping_robot_ry/hip_left-ch.txt"]
+#  hip_right: [hip_right, "@CMAKE_CURRENT_SOURCE_DIR@/convex/jumping_robot_ry/hip_right-ch.txt"]
+#  thigh_left: [thigh_left, "@CMAKE_CURRENT_SOURCE_DIR@/convex/jumping_robot_ry/thigh_left-ch.txt"]
+#  thigh_right: [thigh_right, "@CMAKE_CURRENT_SOURCE_DIR@/convex/jumping_robot_ry/thigh_right-ch.txt"]
+#  trunk: [trunk, "@CMAKE_CURRENT_SOURCE_DIR@/convex/jumping_robot_ry/trunk-ch.txt"]
+## Default setting for the collision parameters
+#default-col: &default-col
+#  iDist: 0.02
+#  sDist: 0.005
+#  damping: 0
+#minimalSelfCollisions:
+#  # Arm <-> Body collision
+#
+#  # Arm <-> thigh ,Hip collision
+#  - body1: arm_left
+#    body2: hip_left
+#    <<: *default-col
+#  - body1: arm_right
+#    body2: hip_right
+#    <<: *default-col
+#  - body1: arm_right
+#    body2: thigh_right
+#    <<: *default-col
+#  - body1: arm_left
+#    body2: thigh_left
+#    <<: *default-col
+#  # Right leg <-> Left leg collision
+#  - body1: foot_left
+#    body2: foot_right
+#    <<: *default-col
+#  - body1: ankle_left
+#    body2: ankle_right
+#    <<: *default-col
+#  - body1: calf_left
+#    body2: calf_right
+#    <<: *default-col
+#  - body1: thigh_left
+#    body2: thigh_right
+#    <<: *default-col
+#  # Calf <-> trunk collision
+#  - body1: calf_left
+#    body2: trunk
+#    <<: *default-col
+#  - body1: calf_right
+#    body2: trunk
+#    <<: *default-col
+#  # ankle foot <-> thigh collision
+#  - body1: ankle_left
+#    body2: thigh_left
+#    <<: *default-col
+#  - body1: ankle_right
+#    body2: thigh_right
+#    <<: *default-col
+#  - body1: foot_left
+#    body2: thigh_left
+#    <<: *default-col
+#  - body1: foot_right
+#    body2: thigh_right
+#    <<: *default-col
+
+bodySensors:
+  - name: FloatingBase
+    parentBody: trunk
+    X_b_s:
+      rotation: [0, 0, 0]
+      translation: [0, 0, 0]
+  - name: Accelerometer
+    parentBody: trunk
+    X_b_s:
+      rotation: [0, 0, 0]
+      translation: [0, 0, 0]
+
+forceSensors:
+  - name: RightFootForceSensor
+    parentBody: foot_right
+    X_p_f:
+      rotation: [0, -1.5707963267949, 0]
+      translation: [0, 0, 0]
+  - name: LeftFootForceSensor
+    parentBody: foot_left
+    X_p_f:
+      rotation: [0, -1.5707963267949, 0]
+      translation: [0, 0, 0]
+
+lipmStabilizer:
+  leftFootSurface: LeftFoot
+  rightFootSurface: RightFoot
+  torsoBodyName: trunk

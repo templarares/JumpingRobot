@@ -1,0 +1,2 @@
+xmlModelPath: "@PROJECT_SOURCE_DIR@/mujoco/jumping_robot_ry.xml"
+pdGainsPath: "@PROJECT_SOURCE_DIR@/mujoco/pdgains_ry.dat"

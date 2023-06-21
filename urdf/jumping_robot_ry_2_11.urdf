@@ -1,0 +1,759 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-1-g15f4949  Build Version: 1.6.7594.29634
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="jumping_robot_ry">
+  <mujoco>
+        <compiler
+        meshdir="../meshes/"
+        balanceinertia="true"
+        discardvisual="false" />
+  </mujoco>
+
+
+  <!--link name="base_link"/>
+  <joint name="waist" type="fixed">
+    <parent link="base_link"/>
+    <child link="trunk"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+  </joint-->
+
+  <link
+    name="trunk">
+    <inertial>
+      <origin
+        xyz="-0.002531 -0.0059537 0.089042"
+        rpy="0 0 0" />
+      <mass
+        value="21" />
+      <inertia
+        ixx="0.074461"
+        ixy="-5.0075E-05"
+        ixz="0.00047152"
+        iyy="0.037062"
+        iyz="4.1259E-05"
+        izz="0.074747" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://jumping_robot_ry/meshes/trunk.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://jumping_robot_ry/meshes/trunk.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <link
+    name="arm_left">
+    <inertial>
+      <origin
+        xyz="0.171298707646883 0.000442727910771353 0.00603781286242466"
+        rpy="0 0 0" />
+      <mass
+        value="1.52221608370814" />
+      <inertia
+        ixx="0.00234673874309674"
+        ixy="-3.97823541008934E-05"
+        ixz="9.20796492768668E-05"
+        iyy="0.00356004819918833"
+        iyz="5.94429530869554E-07"
+        izz="0.00422659743312654" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://jumping_robot_ry/meshes/arm_left.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://jumping_robot_ry/meshes/arm_left.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="shoulder_left"
+    type="revolute">
+    <origin
+      xyz="0.0022528 0.253 0.16485"
+      rpy="-1.5708 1.5671 3.1416" />
+    <parent
+      link="trunk" />
+    <child
+      link="arm_left" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="280"
+      velocity="23.14" />
+  </joint>
+  <link
+    name="arm_right">
+    <inertial>
+      <origin
+        xyz="0.170556178695403 0.000375210079988508 -0.00633364062335029"
+        rpy="0 0 0" />
+      <mass
+        value="1.5289953638464" />
+      <inertia
+        ixx="0.00234261945606455"
+        ixy="-3.91975023957404E-05"
+        ixz="-9.14861075964873E-05"
+        iyy="0.00355935277503828"
+        iyz="9.72606058003276E-07"
+        izz="0.00422289109374475" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://jumping_robot_ry/meshes/arm_right.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://jumping_robot_ry/meshes/arm_right.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="shoulder_right"
+    type="revolute">
+    <origin
+      xyz="0.0022528 -0.26199 0.16485"
+      rpy="-1.5708 1.5671 3.1416" />
+    <parent
+      link="trunk" />
+    <child
+      link="arm_right" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="280"
+      velocity="23.14" />
+  </joint>
+  <link
+    name="hip_left">
+    <inertial>
+      <origin
+        xyz="0.000264789340325478 0.00227805343992549 -0.0517419329764953"
+        rpy="0 0 0" />
+      <mass
+        value="2.77226288578825" />
+      <inertia
+        ixx="0.00230494842187513"
+        ixy="-1.09491921692086E-06"
+        ixz="-1.89821584403482E-06"
+        iyy="0.00278714725530115"
+        iyz="1.49357926969218E-05"
+        izz="0.00265411614795581" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://jumping_robot_ry/meshes/hip_left.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://jumping_robot_ry/meshes/hip_left.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="hip_left_x"
+    type="revolute">
+    <origin
+      xyz="-0.010946 0.083004 -0.223"
+      rpy="-2.749 1.565 -2.749" />
+    <parent
+      link="trunk" />
+    <child
+      link="hip_left" />
+    <axis
+      xyz="0.0053659 0 -0.99999" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="280"
+      velocity="23.14" />
+  </joint>
+  <link
+    name="thigh_left">
+    <inertial>
+      <origin
+        xyz="0.204287897160974 0.0124777472765908 0.00050083736854091"
+        rpy="0 0 0" />
+      <mass
+        value="2.24457303787033" />
+      <inertia
+        ixx="0.00442080407971733"
+        ixy="-0.000245782569411371"
+        ixz="4.50972349332251E-05"
+        iyy="0.0213102863059706"
+        iyz="3.309725347685E-06"
+        izz="0.0200095245878092" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://jumping_robot_ry/meshes/thigh_left.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://jumping_robot_ry/meshes/thigh_left.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="hip_left_y"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="1.5708 0 0" />
+    <parent
+      link="hip_left" />
+    <child
+      link="thigh_left" />
+    <axis
+      xyz="0.0022222 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="280"
+      velocity="23.14" />
+  </joint>
+  <link
+    name="calf_left">
+    <inertial>
+      <origin
+        xyz="0.181032783526921 0.00565154355776891 -0.00098246183374387"
+        rpy="0 0 0" />
+      <mass
+        value="1.75714584456127" />
+      <inertia
+        ixx="0.00244024177617284"
+        ixy="4.65980520071359E-05"
+        ixz="4.37578077118695E-06"
+        iyy="0.0176434834993875"
+        iyz="6.29874205032802E-07"
+        izz="0.0171561337463473" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://jumping_robot_ry/meshes/calf_left.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://jumping_robot_ry/meshes/calf_left.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="knee_left"
+    type="revolute">
+    <origin
+      xyz="0.45 0 0"
+      rpy="0 0.0022222 0.0011465" />
+    <parent
+      link="thigh_left" />
+    <child
+      link="calf_left" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="280"
+      velocity="23.14" />
+  </joint>
+  <link
+    name="ankle_left">
+    <inertial>
+      <origin
+        xyz="-0.000291440779461694 -0.0684593321296306 -0.000437809242085765"
+        rpy="0 0 0" />
+      <mass
+        value="0.426454573230445" />
+      <inertia
+        ixx="0.000255094327728725"
+        ixy="-1.25868931748423E-06"
+        ixz="-2.10382440379478E-07"
+        iyy="0.000154854283488368"
+        iyz="1.04672180226571E-07"
+        izz="0.000252474733936312" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://jumping_robot_ry/meshes/ankle_left.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://jumping_robot_ry/meshes/ankle_left.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="ankle_left_y"
+    type="revolute">
+    <origin
+      xyz="0.45 0 0"
+      rpy="0 0 -2.4552E-05" />
+    <parent
+      link="calf_left" />
+    <child
+      link="ankle_left" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="280"
+      velocity="23.14" />
+  </joint>
+  <link
+    name="foot_left">
+    <inertial>
+      <origin
+        xyz="0.0590531832316799 -0.000380314981998711 0.0199411907634456"
+        rpy="0 0 0" />
+      <mass
+        value="1.17881865429034" />
+      <inertia
+        ixx="0.00491833296516079"
+        ixy="-4.29169528436321E-06"
+        ixz="4.81264608096593E-05"
+        iyy="0.00417461362283326"
+        iyz="4.80973862828781E-05"
+        izz="0.000947864307528784" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://jumping_robot_ry/meshes/foot_left.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://jumping_robot_ry/meshes/foot_left.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="ankle_left_x"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="-1.5708 0.018109 0" />
+    <parent
+      link="ankle_left" />
+    <child
+      link="foot_left" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="280"
+      velocity="23.14" />
+  </joint>
+  <link
+    name="hip_right">
+    <inertial>
+      <origin
+        xyz="-3.77763681047583E-06 -0.0022788213769698 -0.0517485653331722"
+        rpy="0 0 0" />
+      <mass
+        value="2.77194420190747" />
+      <inertia
+        ixx="0.00230482428849934"
+        ixy="-6.70310353064832E-08"
+        ixz="-3.70150029359319E-08"
+        iyy="0.00278711231133955"
+        iyz="-1.49675088110477E-05"
+        izz="0.00265407493550081" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://jumping_robot_ry/meshes/hip_right.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://jumping_robot_ry/meshes/hip_right.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="hip_right_x"
+    type="revolute">
+    <origin
+      xyz="-0.010946 -0.091996 -0.223"
+      rpy="0 1.5708 0" />
+    <parent
+      link="trunk" />
+    <child
+      link="hip_right" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="280"
+      velocity="23.14" />
+  </joint>
+  <link
+    name="thigh_right">
+    <inertial>
+      <origin
+        xyz="0.204159056818807 0.0124821544665048 -0.000563980377692577"
+        rpy="0 0 0" />
+      <mass
+        value="2.24418551888605" />
+      <inertia
+        ixx="0.00442149882840375"
+        ixy="-0.000242061145095149"
+        ixz="-3.25583828989526E-05"
+        iyy="0.0213372609961473"
+        iyz="-1.1673643545292E-06"
+        izz="0.02003601312423" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://jumping_robot_ry/meshes/thigh_right.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://jumping_robot_ry/meshes/thigh_right.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="hip_right_y"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="1.5708 0.0053659 0.0022223" />
+    <parent
+      link="hip_right" />
+    <child
+      link="thigh_right" />
+    <axis
+      xyz="0.0022222 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="280"
+      velocity="23.14" />
+  </joint>
+  <link
+    name="calf_right">
+    <inertial>
+      <origin
+        xyz="0.182607647628176 0.00618307415812687 0.000139878399133181"
+        rpy="0 0 0" />
+      <mass
+        value="1.77439209281503" />
+      <inertia
+        ixx="0.00243748123190968"
+        ixy="1.28737896059698E-05"
+        ixz="-1.99350427958578E-06"
+        iyy="0.0176413056387606"
+        iyz="-1.02204152230496E-06"
+        izz="0.0171504340007149" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://jumping_robot_ry/meshes/calf_right.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://jumping_robot_ry/meshes/calf_right.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="knee_right"
+    type="revolute">
+    <origin
+      xyz="0.45 0 0"
+      rpy="0 -0.0022222 -0.0010806" />
+    <parent
+      link="thigh_right" />
+    <child
+      link="calf_right" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="280"
+      velocity="23.14" />
+  </joint>
+  <link
+    name="ankle_right">
+    <inertial>
+      <origin
+        xyz="-0.000291429066066357 -0.0684593541528584 0.000437807503005747"
+        rpy="0 0 0" />
+      <mass
+        value="0.426454169497049" />
+      <inertia
+        ixx="0.000255093687238287"
+        ixy="-1.25880429153223E-06"
+        ixz="2.10266881314114E-07"
+        iyy="0.000154854161809243"
+        iyz="-1.04747366225109E-07"
+        izz="0.000252474141004131" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://jumping_robot_ry/meshes/ankle_right.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://jumping_robot_ry/meshes/ankle_right.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="ankle_right_y"
+    type="revolute">
+    <origin
+      xyz="0.449 0 0"
+      rpy="0 0 0.0022026" />
+    <parent
+      link="calf_right" />
+    <child
+      link="ankle_right" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="280"
+      velocity="23.14" />
+  </joint>
+  <link
+    name="foot_right">
+    <inertial>
+      <origin
+        xyz="0.0590550454769554 0.000380265171033706 0.0199340670722154"
+        rpy="0 0 0" />
+      <mass
+        value="1.17888308619329" />
+      <inertia
+        ixx="0.00491831496055339"
+        ixy="4.30924527866949E-06"
+        ixz="4.80811366493119E-05"
+        iyy="0.00417457553264411"
+        iyz="-4.8098195438002E-05"
+        izz="0.000947871402094289" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://jumping_robot_ry/meshes/foot_right.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://jumping_robot_ry/meshes/foot_right.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="ankle_right_x"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="-1.5708 -0.022852 0" />
+    <parent
+      link="ankle_right" />
+    <child
+      link="foot_right" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="280"
+      velocity="23.14" />
+  </joint>
+</robot>

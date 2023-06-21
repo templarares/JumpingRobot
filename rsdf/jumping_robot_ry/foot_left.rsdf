@@ -1,0 +1,45 @@
+<?xml version="1.0" ?>
+<robot name="jumping_robot_ry">
+  
+  <planar_surface name="LeftFoot" link="foot_left">
+    <origin rpy="-0.0 -1.570796012878418 0.0" xyz="0.07699999958276749 -0.00024865567684173584 0.03235697001218796" />
+    <points>
+      <point xy="0.12087097764015198 0.05242723971605301" />
+        <point xy="-0.11978316307067871 0.05357017368078232" />
+        <point xy="-0.12087098509073257 -0.052427247166633606" />
+        <point xy="0.11978316307067871 -0.05357016623020172" />
+    </points>
+    <material name="plastic" />
+  </planar_surface>
+
+  <planar_surface name="LeftFootCenter" link="foot_left">
+    <origin rpy="-0.0 -1.570796012878418 0.0" xyz="0.07699999958276749 -0.00024865567684173584 0.03235697001218796" />
+    <points>
+      <point xy="0.12087097764015198 0.05242723971605301" />
+        <point xy="-0.11978316307067871 0.05357017368078232" />
+        <point xy="-0.12087098509073257 -0.052427247166633606" />
+        <point xy="0.11978316307067871 -0.05357016623020172" />
+    </points>
+    <material name="plastic" />
+  </planar_surface>
+
+  <planar_surface name="LeftFootFront" link="foot_left">
+    <origin rpy="-0.0 -1.570796012878418 0.0" xyz="0.07699999958276749 -0.00024865567684173584 0.15235697" />
+    <points>
+      <point xy="0 0.05242723971605301" />
+      <point xy="0 -0.05357016623020172" />
+    </points>
+    <material name="plastic" />
+  </planar_surface>
+
+  <planar_surface name="LeftFootBack" link="foot_left">
+    <origin rpy="-0.0 -1.570796012878418 0.0" xyz="0.07699999958276749 -0.00024865567684173584 -0.08764303" />
+    <points>
+      <point xy="0 0.05357017368078232" />
+      <point xy="0 -0.052427247166633606" />
+    </points>
+    <material name="plastic" />
+  </planar_surface>
+
+
+</robot>

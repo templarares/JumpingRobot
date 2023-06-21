@@ -1,0 +1,330 @@
+<mujoco model="jumping_robot_ry">
+    <compiler angle="radian" meshdir="../meshes/" />
+    <size njmax="1000" nconmax="1000" nuserdata="1000" nuser_actuator="34"/>
+    <option timestep="0.001" iterations="50" tolerance="1e-10" solver="PGS" jacobian="dense" cone="pyramidal" />
+
+    <default>
+        <joint limited="true" damping="0.2" pos="0 0 0" />
+        <motor ctrllimited="false" forcelimited="false"/>
+        <default class="collision">
+          <geom condim="3" material="matgeom" type="mesh" group="0" />
+        </default>
+        <default class="visual">
+          <geom condim="3" material="matgeom" type="mesh" group="1" conaffinity="0" contype="0" />
+        </default>
+
+        <default class="L_foot">
+          <!-- For the box, size is width/length/height pos offset is applied to match the visual shape -->
+          <geom pos="0.063 0.0 0.033" quat="1 0 0 0.0" type="box" rgba="1.898039 0.917647 0.929412 1" size="0.014 0.0535 0.122" condim="6"/>
+        </default>
+        <default class="R_foot">
+          <geom pos="0.063 0.0 0.033" quat="1 0 0 0.0" type="box" rgba="1.898039 0.917647 0.929412 1" size="0.014 0.0535 0.122" condim="6"/>
+        </default>
+    </default>
+
+    <visual>
+        <map force="0.1" zfar="30"/>
+        <rgba haze="0.15 0.25 0.35 1"/>
+        <quality shadowsize="2048"/>
+        <global offwidth="800" offheight="800"/>
+    </visual>
+
+    <asset>
+        <mesh name=   "trunk"       file="trunk.STL" />
+        <mesh name=   "arm_left"    file="arm_left.STL" />
+        <mesh name=   "arm_right"   file="arm_right.STL" />
+        <mesh name=   "hip_left"    file="hip_left.STL" />
+        <mesh name=   "thigh_left"  file="thigh_left.STL" />
+        <mesh name=   "calf_left"   file="calf_left.STL" />
+        <mesh name=   "ankle_left"  file="ankle_left.STL" />
+        <mesh name=   "foot_left"   file="foot_left.STL" />
+        <mesh name=   "hip_right"   file="hip_right.STL" />
+        <mesh name=   "thigh_right" file="thigh_right.STL" />
+        <mesh name=   "calf_right" file="calf_right.STL" />
+        <mesh name=   "ankle_right" file="ankle_right.STL" />
+        <mesh name=   "foot_right" file="foot_right.STL" />
+
+        <mesh name="convex_trunk" file="trunk.STL" />
+
+        <texture name="texplane" type="2d" builtin="checker" rgb1=".2 .3 .4" rgb2=".1 0.15 0.2" width="512" height="512" mark="cross" markrgb=".8 .8 .8"/>
+        <texture name="texgeom" type="cube" builtin="flat" mark="cross" width="127" height="1278" rgb1="0.8 0.6 0.4" rgb2="0.8 0.6 0.4" markrgb="1 1 1" random="0.01"/>
+        <material name="matplane" reflectance="0.3" texture="texplane" texrepeat="1 1" texuniform="true"/>
+        <material name="matgeom" texture="texgeom" texuniform="true" rgba="0.8 0.6 .4 1"/>
+    </asset>
+
+    <contact>
+        <exclude body1="trunk" body2="arm_left" /> 
+        <exclude body1="trunk" body2="arm_right" />
+        <exclude body1="trunk" body2="hip_left" />
+        <exclude body1="trunk" body2="thigh_left" />
+        <exclude body1="trunk" body2="calf_left" />
+        <exclude body1="trunk" body2="ankle_left" />
+        <exclude body1="trunk" body2="foot_left" />
+        <exclude body1="trunk" body2="hip_right" />
+        <exclude body1="trunk" body2="thigh_right" />
+        <exclude body1="trunk" body2="calf_right" />
+        <exclude body1="trunk" body2="ankle_right" />
+        <exclude body1="trunk" body2="foot_right" />
+        <exclude body1="arm_left" body2="trunk" />
+        <exclude body1="arm_left" body2="arm_right" />
+        <exclude body1="arm_left" body2="hip_left" />
+        <exclude body1="arm_left" body2="thigh_left" />
+        <exclude body1="arm_left" body2="calf_left" />
+        <exclude body1="arm_left" body2="ankle_left" />
+        <exclude body1="arm_left" body2="foot_left" />
+        <exclude body1="arm_left" body2="hip_right" />
+        <exclude body1="arm_left" body2="thigh_right" />
+        <exclude body1="arm_left" body2="calf_right" />
+        <exclude body1="arm_left" body2="ankle_right" />
+        <exclude body1="arm_left" body2="foot_right" />
+        <exclude body1="arm_right" body2="trunk" />
+        <exclude body1="arm_right" body2="arm_left" />
+        <exclude body1="arm_right" body2="hip_left" />
+        <exclude body1="arm_right" body2="thigh_left" />
+        <exclude body1="arm_right" body2="calf_left" />
+        <exclude body1="arm_right" body2="ankle_left" />
+        <exclude body1="arm_right" body2="foot_left" />
+        <exclude body1="arm_right" body2="hip_right" />
+        <exclude body1="arm_right" body2="thigh_right" />
+        <exclude body1="arm_right" body2="calf_right" />
+        <exclude body1="arm_right" body2="ankle_right" />
+        <exclude body1="arm_right" body2="foot_right" />
+        <exclude body1="hip_left" body2="trunk" />
+        <exclude body1="hip_left" body2="arm_left" />
+        <exclude body1="hip_left" body2="arm_right" />
+        <exclude body1="hip_left" body2="thigh_left" />
+        <exclude body1="hip_left" body2="calf_left" />
+        <exclude body1="hip_left" body2="ankle_left" />
+        <exclude body1="hip_left" body2="foot_left" />
+        <exclude body1="hip_left" body2="hip_right" />
+        <exclude body1="hip_left" body2="thigh_right" />
+        <exclude body1="hip_left" body2="calf_right" />
+        <exclude body1="hip_left" body2="ankle_right" />
+        <exclude body1="hip_left" body2="foot_right" />
+        <exclude body1="thigh_left" body2="trunk" />
+        <exclude body1="thigh_left" body2="arm_left" />
+        <exclude body1="thigh_left" body2="arm_right" />
+        <exclude body1="thigh_left" body2="hip_left" />
+        <exclude body1="thigh_left" body2="calf_left" />
+        <exclude body1="thigh_left" body2="ankle_left" />
+        <exclude body1="thigh_left" body2="foot_left" />
+        <exclude body1="thigh_left" body2="hip_right" />
+        <exclude body1="thigh_left" body2="thigh_right" />
+        <exclude body1="thigh_left" body2="calf_right" />
+        <exclude body1="thigh_left" body2="ankle_right" />
+        <exclude body1="thigh_left" body2="foot_right" />
+        <exclude body1="calf_left" body2="trunk" />
+        <exclude body1="calf_left" body2="arm_left" />
+        <exclude body1="calf_left" body2="arm_right" />
+        <exclude body1="calf_left" body2="hip_left" />
+        <exclude body1="calf_left" body2="thigh_left" />
+        <exclude body1="calf_left" body2="ankle_left" />
+        <exclude body1="calf_left" body2="foot_left" />
+        <exclude body1="calf_left" body2="hip_right" />
+        <exclude body1="calf_left" body2="thigh_right" />
+        <exclude body1="calf_left" body2="calf_right" />
+        <exclude body1="calf_left" body2="ankle_right" />
+        <exclude body1="calf_left" body2="foot_right" />
+        <exclude body1="ankle_left" body2="trunk" />
+        <exclude body1="ankle_left" body2="arm_left" />
+        <exclude body1="ankle_left" body2="arm_right" />
+        <exclude body1="ankle_left" body2="hip_left" />
+        <exclude body1="ankle_left" body2="thigh_left" />
+        <exclude body1="ankle_left" body2="calf_left" />
+        <exclude body1="ankle_left" body2="foot_left" />
+        <exclude body1="ankle_left" body2="hip_right" />
+        <exclude body1="ankle_left" body2="thigh_right" />
+        <exclude body1="ankle_left" body2="calf_right" />
+        <exclude body1="ankle_left" body2="ankle_right" />
+        <exclude body1="ankle_left" body2="foot_right" />
+        <exclude body1="foot_left" body2="trunk" />
+        <exclude body1="foot_left" body2="arm_left" />
+        <exclude body1="foot_left" body2="arm_right" />
+        <exclude body1="foot_left" body2="hip_left" />
+        <exclude body1="foot_left" body2="thigh_left" />
+        <exclude body1="foot_left" body2="calf_left" />
+        <exclude body1="foot_left" body2="ankle_left" />
+        <exclude body1="foot_left" body2="hip_right" />
+        <exclude body1="foot_left" body2="thigh_right" />
+        <exclude body1="foot_left" body2="calf_right" />
+        <exclude body1="foot_left" body2="ankle_right" />
+        <exclude body1="foot_left" body2="foot_right" />
+        <exclude body1="hip_right" body2="trunk" />
+        <exclude body1="hip_right" body2="arm_left" />
+        <exclude body1="hip_right" body2="arm_right" />
+        <exclude body1="hip_right" body2="hip_left" />
+        <exclude body1="hip_right" body2="thigh_left" />
+        <exclude body1="hip_right" body2="calf_left" />
+        <exclude body1="hip_right" body2="ankle_left" />
+        <exclude body1="hip_right" body2="foot_left" />
+        <exclude body1="hip_right" body2="thigh_right" />
+        <exclude body1="hip_right" body2="calf_right" />
+        <exclude body1="hip_right" body2="ankle_right" />
+        <exclude body1="hip_right" body2="foot_right" />
+        <exclude body1="thigh_right" body2="trunk" />
+        <exclude body1="thigh_right" body2="arm_left" />
+        <exclude body1="thigh_right" body2="arm_right" />
+        <exclude body1="thigh_right" body2="hip_left" />
+        <exclude body1="thigh_right" body2="thigh_left" />
+        <exclude body1="thigh_right" body2="calf_left" />
+        <exclude body1="thigh_right" body2="ankle_left" />
+        <exclude body1="thigh_right" body2="foot_left" />
+        <exclude body1="thigh_right" body2="hip_right" />
+        <exclude body1="thigh_right" body2="calf_right" />
+        <exclude body1="thigh_right" body2="ankle_right" />
+        <exclude body1="thigh_right" body2="foot_right" />
+        <exclude body1="calf_right" body2="trunk" />
+        <exclude body1="calf_right" body2="arm_left" />
+        <exclude body1="calf_right" body2="arm_right" />
+        <exclude body1="calf_right" body2="hip_left" />
+        <exclude body1="calf_right" body2="thigh_left" />
+        <exclude body1="calf_right" body2="calf_left" />
+        <exclude body1="calf_right" body2="ankle_left" />
+        <exclude body1="calf_right" body2="foot_left" />
+        <exclude body1="calf_right" body2="hip_right" />
+        <exclude body1="calf_right" body2="thigh_right" />
+        <exclude body1="calf_right" body2="ankle_right" />
+        <exclude body1="calf_right" body2="foot_right" />
+        <exclude body1="ankle_right" body2="trunk" />
+        <exclude body1="ankle_right" body2="arm_left" />
+        <exclude body1="ankle_right" body2="arm_right" />
+        <exclude body1="ankle_right" body2="hip_left" />
+        <exclude body1="ankle_right" body2="thigh_left" />
+        <exclude body1="ankle_right" body2="calf_left" />
+        <exclude body1="ankle_right" body2="ankle_left" />
+        <exclude body1="ankle_right" body2="foot_left" />
+        <exclude body1="ankle_right" body2="hip_right" />
+        <exclude body1="ankle_right" body2="thigh_right" />
+        <exclude body1="ankle_right" body2="calf_right" />
+        <exclude body1="ankle_right" body2="foot_right" />
+        <exclude body1="foot_right" body2="trunk" />
+        <exclude body1="foot_right" body2="arm_left" />
+        <exclude body1="foot_right" body2="arm_right" />
+        <exclude body1="foot_right" body2="hip_left" />
+        <exclude body1="foot_right" body2="thigh_left" />
+        <exclude body1="foot_right" body2="calf_left" />
+        <exclude body1="foot_right" body2="ankle_left" />
+        <exclude body1="foot_right" body2="foot_left" />
+        <exclude body1="foot_right" body2="hip_right" />
+        <exclude body1="foot_right" body2="thigh_right" />
+        <exclude body1="foot_right" body2="calf_right" />
+        <exclude body1="foot_right" body2="ankle_right" />
+
+    </contact>
+    <worldbody>
+        <geom name="floor" pos="0 0 0" size="0 0 .25" type="plane" material="matplane" condim="3"/>
+        <light directional="false" diffuse="0.2 0.2 0.2" specular="0 0 0" pos="0 0 2" dir="0 0 -1" castshadow="false"/>
+        <body name="trunk" pos="0 0 1.20"  quat="1 0 0 0">
+          <freejoint name="root" />
+	  <inertial pos="-0.002531 -0.0059537 0.089042" quat="0.632175 0.631043 -0.318165 0.317664" mass="21.000001" diaginertia="0.0750967 0.0741114 0.0370619" />
+        <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.898039 0.917647 0.429412 1" mesh="trunk" />
+        <geom type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="trunk" />
+        <!-- site for root imu sensor -->
+        <site name="imu"  size="0.01" pos="0 0 0" />
+        <body name="arm_left" pos="0.0022528 0.253 0.16485" quat="-0.499078 -0.499072 -0.500926 0.50092">
+            <inertial pos="0.171299 0.000442728 0.00603781" quat="-0.0124989 0.724064 0.0105142 0.68954" mass="1.52222" diaginertia="0.0042311 0.00356134 0.00234094" />
+            <joint name="shoulder_left" pos="0 0 0" axis="0 0 1" limited="true" range="-3.14 3.14" />
+            <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="1 1 1 1" mesh="arm_left" />
+            <geom type="mesh" rgba="1 1 1 1" mesh="arm_left" />
+        </body>
+        <body name="arm_right" pos="0.0022528 -0.26199 0.16485" quat="-0.499078 -0.499072 -0.500926 0.50092">
+            <inertial pos="0.170556 0.00037521 -0.00633364" quat="-0.00946932 0.689655 0.0130611 0.723958" mass="1.529" diaginertia="0.00422734 0.00356059 0.00233693" />
+            <joint name="shoulder_right" pos="0 0 0" axis="0 0 1" limited="true" range="-3.14 3.14" />
+            <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="1 1 1 1" mesh="arm_right" />
+            <geom type="mesh" rgba="1 1 1 1" mesh="arm_right" />
+        </body>
+        <body name="hip_left" pos="-0.010946 0.083004 -0.223" quat="0.707107 0 0.707107 0">
+            <inertial pos="0.000264789 0.00227805 -0.0517419" quat="0.472335 0.524937 0.470923 0.528746" mass="2.77226" diaginertia="0.00278881 0.00265247 0.00230494" />
+            <joint name="hip_left_x" pos="0 0 0" axis="0.0 0 -1" limited="true" range="-3.14 3.14" />
+            <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.898039 0.917647 0.929412 1" mesh="hip_left" />
+            <geom type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="hip_left" />
+            <body name="thigh_left" pos="0 0 0" quat="0.707107 0.707107 0 0">
+                <inertial pos="0.204288 0.0124777 0.000500837" quat="0.495119 0.49758 0.503846 0.503398" mass="2.24457" diaginertia="0.0213139 0.0200096 0.0044171" />
+                <joint name="hip_left_y" pos="0 0 0" axis="0 0 1" limited="true" range="-3.14 3.14" />
+                <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.898039 0.917647 0.929412 1" mesh="thigh_left" />
+                <geom type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="thigh_left" />
+                <body name="calf_left" pos="0.45 0 0" quat="1 0 0 0">
+                    <inertial pos="0.181033 0.00565154 -0.000982462" quat="0.500362 0.501169 0.498977 0.499489" mass="1.75715" diaginertia="0.0176436 0.0171561 0.0024401" />
+                    <joint name="knee_left" pos="0 0 0" axis="0 0 1" limited="true" range="-3.14 3.14" />
+                    <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.898039 0.917647 0.929412 1" mesh="calf_left" />
+                    <geom type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="calf_left" />
+                    <body name="ankle_left" pos="0.45 0 0" quat="1 0 0 0">
+                        <inertial pos="-0.000291441 -0.0684593 -0.000437809" quat="0.706725 0.70634 0.023704 -0.0326018" mass="0.426455" diaginertia="0.00255127 0.00252458 0.00154838" />
+                        <joint name="ankle_left_y" pos="0 0 0" axis="0 0 1" limited="true" range="-3.14 3.14" />
+                        <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.898039 0.917647 0.929412 1" mesh="ankle_left" />
+                        <geom type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="ankle_left" />
+                        <body name="foot_left" pos="0 0 0" quat="0.707107 -0.707107 0 0">
+                            <inertial pos="0.0590532 -0.000380315 0.0199412" quat="0.999951 0.00747173 -0.00604751 -0.00244807" mass="1.17882" diaginertia="0.0491893 0.0417531 0.00946563" />
+                            <joint name="ankle_left_x" pos="0 0 0" axis="0 0 -1" limited="true" range="-3.14 3.14" />
+                            <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.898039 0.917647 0.929412 1" mesh="foot_left" />
+		            <geom class="L_foot" />
+                            <!--geom type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="foot_left" /-->
+                            <!-- Site for sensor -->
+                            <site name="LeftFootForceSensor_force"  size="0.01" pos="0.05 0.0 0" quat="0.707107 0.707107 0 0"/>
+                        </body>
+                    </body>
+                </body>
+            </body>
+        </body>
+        <body name="hip_right" pos="-0.010946 -0.091996 -0.223" quat="0.707107 0 0.707107 0">
+            <inertial pos="-3.77764e-06 -0.00227882 -0.0517486" quat="0.526882 0.471519 0.52689 0.471647" mass="2.77194" diaginertia="0.00278878 0.00265241 0.00230482" />
+            <joint name="hip_right_x" pos="0 0 0" axis="0 0 -1" limited="true" range="-3.14 3.14" />
+            <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.898039 0.917647 0.929412 1" mesh="hip_right" />
+            <geom type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="hip_right" />
+            <body name="thigh_right" pos="0 0 0" quat="0.707107 0.707107 0 0">
+                <inertial pos="0.204159 0.0124822 -0.00056398" quat="0.497064 0.495758 0.503172 0.503955" mass="2.24419" diaginertia="0.0213407 0.0200361 0.00441797" />
+                <joint name="hip_right_y" pos="0 0 0" axis="0 0 1" limited="true" range="-3.14 3.14" />
+                <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.898039 0.917647 0.929412 1" mesh="thigh_right" />
+                <geom type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="thigh_right" />
+                <body name="calf_right" pos="0.45 0 0" quat="1 0 0 0">
+                    <inertial pos="0.182608 0.00618307 0.000139878" quat="0.500766 0.499656 0.500276 0.4993" mass="1.77439" diaginertia="0.0176413 0.0171504 0.00243747" />
+                    <joint name="knee_right" pos="0 0 0" axis="0 0 1" limited="true" range="-3.14 3.14" />
+                    <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.898039 0.917647 0.929412 1" mesh="calf_right" />
+                    <geom type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="calf_right" />
+                    <body name="ankle_right" pos="0.449 0 0" quat="1 0 0 0">
+                        <inertial pos="-0.000291429 -0.0684594 0.000437808" quat="0.70634 0.706725 -0.0325878 0.0236891" mass="0.426454" diaginertia="0.00255126 0.00252457 0.00154838" />
+                        <joint name="ankle_right_y" pos="0 0 0" axis="0 0 1" limited="true" range="-3.14 3.14" />
+                        <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.898039 0.917647 0.929412 1" mesh="ankle_right" />
+                        <geom type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="ankle_right" />
+                        <body name="foot_right" pos="0 0 0" quat="0.707107 -0.707107 0 0">
+                            <inertial pos="0.059055 0.000380265 0.0199341" quat="0.999951 -0.00747209 -0.00604181 0.0024602" mass="1.17888" diaginertia="0.0491892 0.0417527 0.00946571" />
+                            <joint name="ankle_right_x" pos="0 0 0" axis="0 0 -1" limited="true" range="-3.14 3.14" />
+                            <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.898039 0.917647 0.929412 1" mesh="foot_right" />
+		            <geom class="R_foot" />
+                            <!--geom type="mesh" rgba="0.898039 0.917647 0.929412 1" mesh="foot_right" /-->
+                            <!-- Site for sensor -->
+                            <site name="RightFootForceSensor_force"  size="0.01" pos="0.05 0.0 0"  quat="0.707107 0.707107 0 0"/>
+                        </body>
+                    </body>
+                </body>
+            </body>
+        </body>
+        </body>
+    </worldbody>
+
+    <actuator>
+      <motor name="shoulder_left" joint="shoulder_left" />
+      <motor name="shoulder_right" joint="shoulder_right" />
+      <motor name="knee_left" joint="knee_left" />
+      <motor name="hip_left_x" joint="hip_left_x" />
+      <motor name="hip_left_y" joint="hip_left_y" />
+      <motor name="ankle_left_y" joint="ankle_left_y" />
+      <motor name="ankle_left_x" joint="ankle_left_x" />
+      <motor name="knee_right" joint="knee_right" />
+      <motor name="hip_right_x" joint="hip_right_x" />
+      <motor name="hip_right_y" joint="hip_right_y" />
+      <motor name="ankle_right_y" joint="ankle_right_y" />
+      <motor name="ankle_right_x" joint="ankle_right_x" />
+    </actuator>
+
+    <sensor>
+      <force         name="RightFootForceSensor_fsensor"    site="RightFootForceSensor_force" />
+      <torque        name="RightFootForceSensor_tsensor"    site="RightFootForceSensor_force" />
+
+      <force         name="LeftFootForceSensor_fsensor"    site="LeftFootForceSensor_force" />
+      <torque        name="LeftFootForceSensor_tsensor"    site="LeftFootForceSensor_force" />
+
+      <gyro name="Accelerometer_gyro" site="imu" />
+      <accelerometer name="Accelerometer_accelerometer" site="imu" />
+    </sensor>
+</mujoco>
